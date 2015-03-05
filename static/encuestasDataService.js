@@ -8,7 +8,11 @@
         factory.getEncuestas = function () {
             return encuestas.query();
         };
+        factory.newEncuesta = function () {
+            return new encuestas();
+        };
         factory.postEncuestas = function (encuesta) {
+            console.log('grabando encuesta:'+ encuesta);
             return encuestas.save(encuesta);
         };
            

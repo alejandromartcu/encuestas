@@ -1,14 +1,30 @@
 (function () {
     "use strict";
 
-    function controlador($stateParams, encuestasDataService) {
+    function controlador(encuestasDataService) {
         var vm = this;
-        vm.shopName = $stateParams.shopName;
-        vm.currentShop = {};
-        vm.categories = [];
+        vm.prueba = 'hola';
+        vm.lenguajes = [ 
+            { name: 'C#' },
+            { name: 'Java' },
+            { name: 'NodeJS' },
+            { name: 'AngularJS' },
+            { name: 'HTML' },
+            { name: 'Javascript' },
+            { name: 'CSS' }];
+    
+        vm.profesiones =  [ 
+            { name: 'Programador' },
+            { name: 'Arquitecto de Software' },
+            { name: 'Diseñador gráfico' },
+            { name: 'Informático' },
+            { name: 'Otros' }];
         
-        
-
+        vm.encuesta = encuestasDataService.newEncuesta();
+        vm.crearEncuesta = function(){
+           encuestasDataService.postEncuestas(vm.encuesta);
+        }
+            
     }
 
     angular
