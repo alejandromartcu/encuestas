@@ -3,12 +3,7 @@
 
     function controlador($stateParams, encuestasDataService) {
         var vm = this;
-        vm.shopName = $stateParams.shopName;
-        vm.currentShop = {};
-        vm.categories = [];
-        
-        
-
+        vm.encuestas = encuestasDataService.getEncuestas();
     }
 
     angular

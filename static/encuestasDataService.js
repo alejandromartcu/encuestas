@@ -6,7 +6,7 @@
         factory.test = true;
 
         factory.getEncuestas = function () {
-            return encuestas.query().$promise;
+            return encuestas.query();
         };
         factory.postEncuestas = function (encuesta) {
             return encuestas.save(encuesta);
