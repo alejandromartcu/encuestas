@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js" ng-app="encuestas">
+<html lang="es" style="position: relative;min-height: 100%;">
+
+<head>
+    <meta charset="utf-8">
+    <base href="/">
+    <meta name="fragment" content="!">
+    <title>Encuestas</title>
+    <meta name="description" content="Tienda de deporte y tiempo libre">
+    <meta name="viewport" content="width=device-width">
+    <!-- build:css static/styles.2.min.css -->
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- endbuild -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" >
+        <div class="navbar-inner">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a ui-sref="landing">Inicio</a>
+                    </li>
+                    <li>
+                        <a ui-sref="nueva-encuesta">Nueva encuesta</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="row" style="background-color: #f2f2f2; padding: 50px;">
+        <div>
+            <main class="container-fluid" ui-view></main>
+        </div>
+    </div>
+
+</body>
+
+<!-- build:js static/bower-js.0.min.js -->
+<script src="/bower_components/angular/angular.min.js"></script>
+<script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<!-- endbuild -->
+
+<!--build:js static/custom-js.0.min.js -->
+<script src="app.js"></script>
+<script src="landingCtrl.js"></script>
+<script src="nuevaCtrl.js"></script>
+<script src="encuestasDataService.js"></script>
+
+
+<!-- endbuild -->
+
+</html>
