@@ -22,7 +22,7 @@ exports.initApp = function() {
 	app.use(bodyParser.json());
 
 	app.use(function (peticion, respuesta, siguiente) {
-		console.log("recibida petición: " + peticion.url);
+		console.log("recibida petición: " + peticion.method + " " + peticion.url);
 		if (peticion.body) {
 			console.log("body: " + JSON.stringify(peticion.body));
 		}
