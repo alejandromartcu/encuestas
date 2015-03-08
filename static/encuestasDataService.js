@@ -8,6 +8,9 @@
         factory.getEncuestas = function () {
             return encuestas.query();
         };
+		factory.getCampoEncuestas = function (campo) {
+            return encuestasGroup.query({campo:campo});
+        };
         factory.newEncuesta = function () {
             return new encuestas();
         };
@@ -19,7 +22,8 @@
 
 
         var encuestas = $resource('/api/encuestas');
-        
+		var encuestasGroup = $resource('/api/:campo/encuestas/');
+		        
         return factory;
     }
 

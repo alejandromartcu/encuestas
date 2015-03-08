@@ -1,44 +1,42 @@
-<h2>Soy la nueva</h2>
-<form class="form-horizontal text-left">
-    <fieldset>
-        <div id="legend">
-            <legend class="">Rellena la encuesta</legend>
-        </div>
-        <div class="row-fluid">
-            <div class="col-xs-12 col-sm-4">
-                <div class="control-group">
-                    <label class="control-label" for="capital">Lenguajes conocidos:</label>
-                    <div class="controls">
-                        <select ng-model="vm.encuesta.lenguajeBase" ng-options="lang.name as lang.name for lang in vm.lenguajes"></select>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-                <div class="control-group">
-                    <label class="control-label" for="tipo">Lenguajes de interés:</label>
-                    <div class="controls">
-                        <input name="li" class="" ng-model="vm.encuesta.lenguajeInteres">
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-                <div class="control-group">
-                    <label class="control-label" for="anualidades">Profesión:</label>
-                    <div class="controls">
-                        <input name="profesion" class="input" ng-model="vm.encuesta.profesion">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </fieldset>
-</form>
+<h2>Encuesta en tiempo real.</h2>
 <div class="row-fluid">
-    <div class="row-fluid text-right">
-        <div class="col-xs-12 col-sm-6">
-            <!-- La directiva ng-click asocia el evento click sobre un elemento con una función de mi controlador -->
-            <button type="button" class="btn btn-lg btn-primary" ng-click="vm.crearEncuesta()">
-                <span>Enviar encuesta </span>
-            </button>
-        </div>
-    </div>
+	<form class="form-horizontal text-left">
+		<fieldset>
+			<div id="legend">
+				<legend class="">Rellena la encuesta y observa los resultados</legend>
+			</div>
+			<div class="row-fluid">
+				<div class="col-xs-12 col-sm-4">
+					<div class="control-group">
+						<label class="control-label" for="lenguaje">Lenguaje principal:</label>
+						<div class="controls">
+							<select ng-model="vm.encuesta.lenguajeBase" ng-options="l for l in vm.lenguajes"></select>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-4">
+					<div class="control-group">
+						<label class="control-label" for="interes">Interés:</label>
+						<div class="controls">
+							<select ng-model="vm.encuesta.interes" ng-options="i for i in vm.intereses"></select>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-4">
+					<div class="control-group">
+						<label class="control-label" for="profesion">Profesión:</label>
+						<div class="controls">
+							<select ng-model="vm.encuesta.profesion" ng-options="p for p in vm.profesiones"></select>
+						</div>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+<hr>
+<div class="row-fluid">
+	<button type="button" class="btn btn-lg btn-primary" ng-click="vm.crearEncuesta()">
+		<span>Enviar encuesta y ver resultados</span>
+	</button>
 </div>

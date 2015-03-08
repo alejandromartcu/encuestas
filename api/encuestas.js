@@ -1,35 +1,19 @@
 var encuestas = require('../data/encuestas.js');
-var MongoClient = require('mongodb').MongoClient;
-var mongoUrl = "mongodb://localhost:27017/encuesta";
-var mongoCol = "encuesta";
+
 
 exports.enrutar = function (router) {
-    var rutaEncuestas = router.route('/api/encuestas/');
+	var rutaEncuestas = router.route('/api/encuestas/');
+	var rutaCampoEncuestas = router.route('/api/:campo/encuestas/');
 
 
-    rutaEncuestas
-        .get(function (peticion, respuesta) {
-            MongoClient.connect(mongoUrl, function (err, db) {
-                if (!err) {
-                    var collection = db.collection(mongoCol);
-                    collection.find().toArray(function (err, result) {
-                        respuesta.json(result);
-                    });
-                } else {
-                    console.log(err);
-                }
-            });
-        }).post(function (peticion, respuesta) {
-            MongoClient.connect(mongoUrl, function (err, db) {
-                if (!err) {
-                    var collection = db.collection(mongoCol);
-                    collection.insert(peticion.body, function(err, result) {
-                        respuesta.json(result);
-                    });
-                } else {
-                    console.log(err);
-                }
-            });
-        });
-
+	rutaEncuestas
+		.get(function (peticion, respuesta) {
+			encuestas.selectAll(respuesta);
+		}).post(function (peticion, respuesta) {
+			encuestas.insert(peticion.body, respuesta);
+		});
+	rutaCampoEncuestas.get(function (peticion, respuesta) {
+			encuestas.groupBy(peticion.params.campo,respuesta);
+		});
+	
 }
