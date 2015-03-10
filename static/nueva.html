@@ -10,7 +10,7 @@
 					<div class="control-group">
 						<label class="control-label" for="lenguaje">Lenguaje principal:</label>
 						<div class="controls">
-							<select ng-model="vm.encuesta.lenguajeBase" ng-options="l for l in vm.lenguajes"></select>
+							<select class="form-control" ng-model="vm.encuesta.lenguajeBase" ng-options="l for l in vm.lenguajes"></select>
 						</div>
 					</div>
 				</div>
@@ -18,7 +18,7 @@
 					<div class="control-group">
 						<label class="control-label" for="interes">Interés:</label>
 						<div class="controls">
-							<select ng-model="vm.encuesta.interes" ng-options="i for i in vm.intereses"></select>
+							<select class="form-control" ng-model="vm.encuesta.interes" ng-options="i for i in vm.intereses"></select>
 						</div>
 					</div>
 				</div>
@@ -26,7 +26,7 @@
 					<div class="control-group">
 						<label class="control-label" for="profesion">Profesión:</label>
 						<div class="controls">
-							<select ng-model="vm.encuesta.profesion" ng-options="p for p in vm.profesiones"></select>
+							<select class="form-control" ng-model="vm.encuesta.profesion" ng-options="p for p in vm.profesiones"></select>
 						</div>
 					</div>
 				</div>
@@ -34,8 +34,8 @@
 		</fieldset>
 	</form>
 </div>
-<hr>
-<div class="row-fluid">
+
+<div style="margin: 50px 0 0 15px;">
 	<button type="button" class="btn btn-lg btn-primary" ng-click="vm.crearEncuesta()">
 		<span>Enviar encuesta y ver resultados</span>
 	</button>
