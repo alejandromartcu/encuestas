@@ -1,7 +1,7 @@
 {
   "name": "encuestas",
   "version": "1.0.0",
-  "description": "demostracion Angular Node Mongo",
+  "description": "demostración Angular Node Mongo",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

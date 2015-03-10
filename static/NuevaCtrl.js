@@ -1,24 +1,29 @@
 (function () {
-    "use strict";
+	"use strict";
 
-    function controlador(encuestasDataService) {
-        var vm = this;
-        
-        vm.lenguajes = ['C','Java','ObjectiveC','C#','Javascript','PHP','Python','Ruby','Otros']; 
-            
-		vm.intereses = ['AngularJS','ReactJS','Bootstrap','Material Design','NodeJS','MongoDB','Otros' ];
+	function controlador(encuestasDataService) {
+		var vm = this;
+
+		encuestasDataService.getPreguntas().then(function (preguntas) {
+			vm.preguntas = preguntas;
+			vm.preguntas.forEach(function (pregunta) {
+				pregunta.respuestas = encuestasDataService.getRespuestas(pregunta.id);
+			});
+		});
+
+		vm.encuesta = encuestasDataService.newEncuesta();
 		
-        vm.profesiones =  ['Arquitecto de Software','Programador','Analista','Project Manager','Diseñador gráfico','Administrador de Sistemas','Otros'];
-            
-        vm.encuesta = encuestasDataService.newEncuesta();
-        vm.crearEncuesta = function(){
-           encuestasDataService.postEncuestas(vm.encuesta);
-        }
-            
-    }
+		vm.crearEncuesta = function () {
+			vm.preguntas.forEach(function(pregunta){
+				vm.encuesta[pregunta.campo] = pregunta.respuesta;
+			});
+			encuestasDataService.postEncuestas(vm.encuesta);
+		}
 
-    angular
-        .module('encuestas')
-        .controller("NuevaCtrl", controlador);
+	}
+
+	angular
+		.module('encuestas')
+		.controller("NuevaCtrl", controlador);
 
 }());

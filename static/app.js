@@ -20,8 +20,6 @@
                 templateUrl: 'nueva.html',
                 controller: 'NuevaCtrl as vm'
             });
-
-        //$locationProvider.html5Mode(true);
     }
 
     angular

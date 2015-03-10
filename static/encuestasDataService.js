@@ -3,8 +3,12 @@
 
     function encuestasDataService($resource) {
         var factory = {};
-        factory.test = true;
-
+        factory.getPreguntas = function () {
+            return preguntas.query().$promise;
+        };
+		factory.getRespuestas = function (pregunta) {
+            return respuestas.query({pregunta:pregunta});
+        };
         factory.getEncuestas = function () {
             return encuestas.query();
         };
@@ -19,9 +23,9 @@
             return encuestas.save(encuesta);
         };
            
-
-
-        var encuestas = $resource('/api/encuestas');
+        var preguntas = $resource('/api/preguntas');
+		var respuestas = $resource('/api/preguntas/:pregunta/respuestas/');
+		var encuestas = $resource('/api/encuestas');
 		var encuestasGroup = $resource('/api/:campo/encuestas/');
 		        
         return factory;
