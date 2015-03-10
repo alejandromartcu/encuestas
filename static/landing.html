@@ -3,15 +3,24 @@
   <p>Datos actualizados</p>
 </div>
 
+
+<div class="col-md-4">
 <h3>Lenguajes</h3>
 <div ng-repeat='dato in vm.lenguajes'>
 	<h4>{{dato._id}}: <span class="badge">{{dato.count}}</span></h4>
 </div>
+</div>
+
+<div class="col-md-4">
 <h3>Intereses</h3>
 <div ng-repeat='dato in vm.intereses'>
 	<h4>{{dato._id}}: <span class="badge">{{dato.count}}</span></h4>
 </div>
+</div>    
+
+<div class="col-md-4">
 <h3>Profesiones</h3>
 <div ng-repeat='dato in vm.profesiones'>
 	<h4>{{dato._id}}: <span class="badge">{{dato.count}}</span></h4>
+</div>
 </div>
