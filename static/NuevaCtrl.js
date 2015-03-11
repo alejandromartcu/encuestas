@@ -1,7 +1,7 @@
 (function () {
 	"use strict";
 
-	function controlador(encuestasDataService) {
+	function controlador($state, encuestasDataService) {
 		var vm = this;
 
 		encuestasDataService.getPreguntas().then(function (preguntas) {
@@ -18,6 +18,7 @@
 				vm.encuesta[pregunta.campo] = pregunta.respuesta;
 			});
 			encuestasDataService.postEncuestas(vm.encuesta);
+            $state.go('landing');
 		}
 
 	}
