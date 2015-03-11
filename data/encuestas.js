@@ -39,8 +39,6 @@ exports.groupBy = function (campo, respuesta) {
 	});
 }
 
-//b.encuestas.aggregate([{$group:{_id:"$lenguajeBase", count:{$sum:1}}}])
-
 exports.insert = function (encuesta, respuesta) {
 	MongoClient.connect(mongoUrl, function (err, db) {
 		if (!err) {

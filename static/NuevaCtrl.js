@@ -1,7 +1,7 @@
 (function () {
 	"use strict";
 
-	function controlador($state, encuestasDataService) {
+	function controlador($state, encuestasDataService,socketFactory) {
 		var vm = this;
 
 		encuestasDataService.getPreguntas().then(function (preguntas) {
@@ -18,6 +18,7 @@
 				vm.encuesta[pregunta.campo] = pregunta.respuesta;
 			});
 			encuestasDataService.postEncuestas(vm.encuesta);
+			socketFactory.emit("postedData",{date:new Date()});
             $state.go('landing');
 		}
 

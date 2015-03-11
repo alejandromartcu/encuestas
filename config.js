@@ -36,3 +36,32 @@ exports.initRouter = function(app) {
 	app.use(router);
 	return router;
 }
+
+exports.initIO = function(app){
+	var server = require('http').Server(app);
+	var io = require('socket.io')(server);
+	var sockets = [];
+	function conectar(socket) {
+		console.log("Conectando con: " + socket.client.conn.remoteAddress);
+		sockets.push(socket);
+		var saludo = {
+			serverPid: process.pid,
+			date: new Date()
+		};
+		socket.emit('wellcome', saludo);
+		console.log("Enviado saludo " + JSON.stringify(saludo));
+		socket.on('postedData', function (data) {
+			console.log("Un cliente ha actualizado algo" );
+			emitirCanalMensaje("updateTutti",saludo);
+		});
+	}
+	io.on("connect", conectar);
+
+	function emitirCanalMensaje(canal, mensaje) {
+		console.log(new Date().toLocaleTimeString() + " " + canal + " : " + mensaje);
+		sockets.forEach(function (socket) {
+			socket.emit(canal, mensaje);
+		});
+	}
+	return server;
+}

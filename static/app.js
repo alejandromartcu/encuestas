@@ -6,8 +6,7 @@
 
 
     function statesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
-        $locationProvider.html5Mode(true);
-        
+              
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
@@ -21,6 +20,7 @@
                 templateUrl: 'nueva.html',
                 controller: 'NuevaCtrl as vm'
             });
+		$locationProvider.html5Mode(true);
     }
 
     angular

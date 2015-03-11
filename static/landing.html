@@ -5,9 +5,9 @@
 
 <div ng-repeat="pregunta in vm.preguntas">
     <div class="col-md-4">
-        <h3>{{pregunta.texto}}</h3>
+        <h2>{{pregunta.texto}}</h2>
         <div ng-repeat="dato in pregunta.encuestas | orderBy:'-count'">
-            <h4>{{dato._id}}: <span class="badge">{{dato.count}}</span></h4>
+            <h3>{{dato._id}}: <span class="label " ng-class="{ 'label-default': dato.count<=5,'label-primary': dato.count>5, 'label-danger': dato.count>10 }">{{dato.count}}</span></h3>
         </div>
     </div>
 </div>
