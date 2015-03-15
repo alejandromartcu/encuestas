@@ -4,15 +4,15 @@ exports.enrutar = function (router) {
 	var preguntas = [{
 		id: 'lenguajes',
 		campo:'lenguaje',
-		texto: 'Lenguaje principal'
+		texto: 'Lenguaje actual'
 	}, {
 		id: 'intereses',
 		campo:'interes',
-		texto: 'Tencología de Interés'
+		texto: 'Interés'
 	}, {
 		id: 'profesiones',
 		campo:'profesion',
-		texto: 'Tu profesion'
+		texto: 'Profesion'
 	}];
 
 	rutaPreguntas
@@ -25,13 +25,13 @@ exports.enrutar = function (router) {
 			var respuestas = [];
 			switch (pregunta) {
 			case "lenguajes":
-				respuestas = ['C', 'Java', 'ObjectiveC', 'C#', 'Javascript', 'PHP', 'Python', 'Ruby', 'Otros'];
+				respuestas = ['C', 'Java', 'ObjectiveC', 'C#', 'Javascript', 'PHP', 'HTML' ,'Python', 'Ruby', 'Otros'];
 				break;
 			case "intereses":
-				respuestas = ['AngularJS', 'ReactJS', 'Bootstrap', 'Material Design', 'NodeJS', 'MongoDB', 'Otros'];
+				respuestas = ['AngularJS', 'ReactJS', 'Bootstrap', 'Material-Design', 'NodeJS', 'MongoDB', 'Otros'];
 				break;
 			case "profesiones":
-				respuestas = ['Arquitecto de Software', 'Programador', 'Analista', 'Project Manager', 'Diseñador gráfico', 'Administrador de Sistemas', 'Otros'];
+				respuestas = ['Arquitecto-Software', 'Programador', 'Analista', 'Project-Manager', 'Diseñador-Gráfico', 'Sistemas', 'Otros'];
 				break;
 			}
 			respuesta.json(respuestas);
