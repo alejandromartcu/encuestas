@@ -4,8 +4,8 @@
   "description": "demostración Angular Node Mongo",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
-    "postinstall": "bower install"
+    "start": "node server.js",
+    "postinstall": "bower install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
