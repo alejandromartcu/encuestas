@@ -1,7 +1,7 @@
 {
     "name": "Encuestas",
     "main": "server.js",
-    "directory": "static/bower_components/"
+    "directory": "static/bower_components/",
     "version": "0.0.0",
     "authors": [
     "Alberto Basalo <albertobasalo@agorabinaria.com>"
