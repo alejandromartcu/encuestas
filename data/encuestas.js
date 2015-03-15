@@ -1,6 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
 //var mongoUrl = "mongodb://localhost:27017/academiabinaria";
-var mongoUrl ="mongodb://academiabinaria:academiabinaria@ds039311.mongolab.com:39311/academiabinaria";
+var mongoUrl = "mongodb://academiabinaria:academiabinaria@ds039311.mongolab.com:39311/academiabinaria";
 var mongoCol = "encuestas";
 
 
@@ -25,12 +25,12 @@ exports.groupBy = function (campo, respuesta) {
 			var collection = db.collection(mongoCol);
 			collection.aggregate([{
 				$group: {
-					_id: "$" + campo ,
+					_id: "$" + campo,
 					count: {
 						$sum: 1
 					}
 				}
-			}],function (err, result) {
+			}], function (err, result) {
 				respuesta.json(result);
 			});
 		} else {
@@ -44,10 +44,14 @@ exports.insert = function (encuesta, respuesta) {
 	MongoClient.connect(mongoUrl, function (err, db) {
 		if (!err) {
 			var collection = db.collection(mongoCol);
-			collection.insert(encuesta, function (err, result) {
+			collection.update({
+				ip: encuesta.ip
+			}, encuesta, {
+				upsert: true
+			}, function (err, result) {
 				if (!err) {
-					console.log(JSON.stringify(result[0]._id));
-					respuesta.json(result[0]._id);
+					console.log(JSON.stringify(result));
+					respuesta.json(result);
 				} else {
 					console.error(err);
 					respuesta.status(500).send(err);
