@@ -1,6 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
-//var mongoUrl = "mongodb://localhost:27017/academiabinaria";
-var mongoUrl = "mongodb://academiabinaria:academiabinaria@ds039311.mongolab.com:39311/academiabinaria";
+var mongoUrl = "mongodb://localhost:27017/academiabinaria";
 var mongoCol = "encuestas";
 
 
