@@ -1,6 +1,6 @@
 {
     "name": "Encuestas",
-    "main": "index.js",
+    "main": "server.js",
     "version": "0.0.0",
     "authors": [
     "Alberto Basalo <albertobasalo@agorabinaria.com>"
