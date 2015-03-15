@@ -8,6 +8,7 @@
 	
 	require('./api/preguntas.js').enrutar(router);
 	require('./api/encuestas.js').enrutar(router);
-
-	server.listen(3000);
+	
+	var port = process.env.PORT || 3000;
+	server.listen(port);
 }());
