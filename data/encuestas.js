@@ -49,10 +49,8 @@ exports.insert = function (encuesta, respuesta) {
 				upsert: true
 			}, function (err, result) {
 				if (!err) {
-					console.log(JSON.stringify(result));
 					respuesta.json(result);
 				} else {
-					console.error(err);
 					respuesta.status(500).send(err);
 				}
 			});

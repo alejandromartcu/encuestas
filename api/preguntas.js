@@ -1,6 +1,9 @@
 exports.enrutar = function (router) {
 	var rutaPreguntas = router.route('/api/preguntas/');
-	var rutaPreguntaRespuestas = router.route('/api/preguntas/:pregunta/respuestas/');
+	
+    
+    var rutaPreguntaRespuestas = router.route('/api/preguntas/:pregunta/respuestas/');
+    
 	var preguntas = [{
 		id: 'lenguajes',
 		campo:'lenguaje',
@@ -19,6 +22,7 @@ exports.enrutar = function (router) {
 		.get(function (peticion, respuesta) {
 			respuesta.json(preguntas);
 		});
+    
 	rutaPreguntaRespuestas
 		.get(function (peticion, respuesta) {
 			var pregunta = peticion.params.pregunta;
