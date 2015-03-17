@@ -14,20 +14,10 @@ exports.initApp = function() {
 	
 	var app = express();
 	app.use(express.static(__dirname + '/static', options));
-
-
 	app.use(bodyParser.urlencoded({
 		extended: true
 	}));
 	app.use(bodyParser.json());
-
-	app.use(function (peticion, respuesta, siguiente) {
-		console.log("recibida petición: " + peticion.method + " " + peticion.url);
-		if (peticion.body) {
-			console.log("body: " + JSON.stringify(peticion.body));
-		}
-		siguiente();
-	});
 	return app;
 }
 
@@ -40,28 +30,21 @@ exports.initRouter = function(app) {
 exports.initIO = function(app){
 	var server = require('http').Server(app);
 	var io = require('socket.io')(server);
-	var sockets = [];
 	function conectar(socket) {
-		console.log("Conectando con: " + socket.client.conn.remoteAddress);
-		sockets.push(socket);
 		var saludo = {
 			serverPid: process.pid,
 			date: new Date()
 		};
 		socket.emit('wellcome', saludo);
-		console.log("Enviado saludo " + JSON.stringify(saludo));
 		socket.on('postedData', function (data) {
-			console.log("Un cliente ha actualizado algo" );
-			emitirCanalMensaje("updateTutti",saludo);
+			emitirCanalMensaje(socket,"updateTutti",saludo);
 		});
 	}
 	io.on("connect", conectar);
 
-	function emitirCanalMensaje(canal, mensaje) {
-		console.log(new Date().toLocaleTimeString() + " " + canal + " : " + mensaje);
-		sockets.forEach(function (socket) {
-			socket.emit(canal, mensaje);
-		});
+	function emitirCanalMensaje(socket,canal, mensaje) {
+		io.sockets.emit(canal, mensaje);
+        socket.emit(canal, mensaje);
 	}
 	return server;
 }
